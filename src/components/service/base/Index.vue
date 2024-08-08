@@ -40,7 +40,7 @@ import type { Service, ServiceClient } from '~/types'
 const props = defineProps<ServiceClient<Service>>()
 
 const { $settings } = useNuxtApp()
-const isLink = computed(() => isUrl(props.link || ''))
+const isLink = computed(() => (!!props.link)) // isUrl used previously didn't properly detect relative paths
 const target = computed(() => props.target || $settings.behaviour.target)
 
 const immediate = computed(() => props.status?.enabled || !!props.type || false)
