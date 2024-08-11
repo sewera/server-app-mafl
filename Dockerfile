@@ -1,6 +1,6 @@
 ARG NODE=node:20.16.0-alpine
 
-FROM --platform=linux/amd64 $NODE as build
+FROM $NODE AS build
 
 WORKDIR /app
 
@@ -13,7 +13,7 @@ COPY . /app
 
 RUN yarn run build
 
-FROM --platform=linux/amd64 $NODE
+FROM $NODE
 
 LABEL org.opencontainers.image.title="Mafl" \
       org.opencontainers.image.description="Minimalistic flexible homepage" \
